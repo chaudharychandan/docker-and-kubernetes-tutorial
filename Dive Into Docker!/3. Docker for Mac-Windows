@@ -1,0 +1,13 @@
+
+          Docker for Windows / Mac
+
+      _____________________________________
+     |    _____________________________    |
+     |   |                             |   |                Tool that we are going
+     |   | Docker Client (Docker CLI)  |   |------------->  to issue commands to
+     |   |_____________________________|   |
+     |   _______________________________   |
+     |  |                               |  |                Tool that is responsible
+     |  | Docker Server (Docker Daemon) |  |------------->  for creating images,
+     |  |_______________________________|  |                running containers, etc
+     |_____________________________________|
