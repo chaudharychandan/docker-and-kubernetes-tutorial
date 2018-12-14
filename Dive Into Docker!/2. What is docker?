@@ -1,0 +1,30 @@
+        Docker Ecosytem
+ ________________________________
+|               |               |
+| Docker Client | Docker Server |
+|_______________|_______________|   
+|               |               |
+| Docker Machine| Docker Images |
+|_______________|_______________|
+|               |               |
+| Docker Hub    | Docker Compose|
+|_______________|_______________|
+
+Docker is a platform or ecosystem
+around creating and running containers.
+
+                                                   ___________  
+                                                  |           |
+                                  ________________| Container |
+ __________                      |                |___________|
+|          |                     |       
+|  Docker  |_____________________|                Instance of an image.
+|  Image   |                     |                Runs a program.
+|__________|                     |                 ___________ 
+                                 |________________|           |
+                                                  | Container |
+                                                  |___________|
+Single file with all
+the dependencies and
+config required to run
+a program.
