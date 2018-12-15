@@ -34,7 +34,7 @@ $ docker run busybox ping google.com
 
 $ docker ps
 
-___________________________________________________________________________________________________________________________________________
+ __________________________________________________________________________________________________________________________________________
 |                                                                                                                                          |
 | CONTAINER ID        IMAGE               COMMAND             CREATED              STATUS              PORTS               NAMES           |
 | 9e583a69161e        busybox             "ping google.com"   About a minute ago   Up About a minute                       fervent_volhard |

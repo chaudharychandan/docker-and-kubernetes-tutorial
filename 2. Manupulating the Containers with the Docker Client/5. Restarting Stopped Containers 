@@ -1,0 +1,25 @@
+$ docker run busybox echo hi there
+
+  hi there
+
+$ docker ps --all
+
+ _________________________________________________________________________________________________________________________________________________________
+|                                                                                                                                                         |
+| CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS                          PORTS               NAMES               |
+| 9d8d04ee5cfc        busybox             "echo hi there"     13 seconds ago      Exited (0) 10 seconds ago                          recursing_liskov     |
+|_________________________________________________________________________________________________________________________________________________________|
+
+
+$ docker start -a 9d8d04ee5cfc
+
+  hi there
+
+$ docker start -a 9d8d04ee5cfc echo bye there
+
+   __________________________________________________________
+  |                                                          |
+  | you cannot start and attach multiple containers at once` |
+  |__________________________________________________________|
+
+  The default command can not be changed once container is created
