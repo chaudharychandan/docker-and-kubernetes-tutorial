@@ -1,0 +1,18 @@
+$ docker run redis
+
+$ docker ps
+
+$ docker exec -it 40300b13c745 sh
+
+  Gets terminal access of the container
+
+  sh (shell program)
+
+# redis-cli
+
+ ____________________________________________
+|        |              |         |          |
+|  bash  |  powershell  |   zsh   |    sh    |
+|________|______________|_________|__________|
+
+              Command Processors
