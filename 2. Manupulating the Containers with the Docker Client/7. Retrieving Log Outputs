@@ -1,0 +1,16 @@
+
+   ____________________
+  |                    |
+  |  Get logs from a   |
+  |  Container         |
+  |____________________|
+  
+
+                              Get logs
+               ____________________________________________
+              |            |            |                  |
+              |   docker   |    logs    |  <container id>  |
+              |____________|____________|__________________|
+ 
+              Reference the              Id of the container
+              Docker Client                  to look at
