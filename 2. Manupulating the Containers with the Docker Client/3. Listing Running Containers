@@ -1,0 +1,63 @@
+ _____________________________
+|                             |
+| List all running containers |
+|_____________________________|
+
+
+                         List all the
+                      running containers
+           __________________________
+          |             |            |
+          |    docker   |     ps     |
+          |_____________|____________|
+
+          Reference the
+          Docker Client
+
+
+$ docker ps
+ _______________________________________________________________________________________________________________________________
+|                                                                                                                               |
+| CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES |
+|_______________________________________________________________________________________________________________________________|
+
+There is no containers running currently
+
+$ docker run busybox echo hi there
+
+  The command startup the container and almost immediately exits to the command prompt.
+  To keep container running for some amount of time so that we can get the list of containers running through `docker ps`
+
+$ docker run busybox ping google.com
+
+   This command will continue running the conatiner
+
+$ docker ps
+
+___________________________________________________________________________________________________________________________________________
+|                                                                                                                                          |
+| CONTAINER ID        IMAGE               COMMAND             CREATED              STATUS              PORTS               NAMES           |
+| 9e583a69161e        busybox             "ping google.com"   About a minute ago   Up About a minute                       fervent_volhard |
+|__________________________________________________________________________________________________________________________________________|
+
+Now it shows the running container
+
+$ docker ps --all
+
+ _________________________________________________________________________________________________________________________________________________________
+|                                                                                                                                                         |
+| CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS                          PORTS               NAMES               |
+| 9e583a69161e        busybox             "ping google.com"   4 minutes ago       Exited (0) About a minute ago                       fervent_volhard     |
+| 481b451ecf4c        busybox             "echo hi there"     14 minutes ago      Exited (0) 14 minutes ago                           adoring_leavitt     |
+| 44ce8325c3ec        busybox             "echo hi there"     14 minutes ago      Exited (0) 14 minutes ago                           distracted_fermat   |
+| 26ab633313d1        busybox             "sh"                14 minutes ago      Exited (0) 14 minutes ago                           objective_sammet    |
+| af4d37f90071        busybox             "ls"                15 minutes ago      Exited (0) 15 minutes ago                           kind_goldstine      |
+| 8d093861b832        busybox             "sh"                15 minutes ago      Exited (0) 15 minutes ago                           distracted_bartik   |
+| e175162d9e1f        hello-world         "echo"              About an hour ago   Created                                             determined_bardeen  |
+| 0d8686592bab        busybox             "echo hi there"     About an hour ago   Exited (0) About an hour ago                        happy_haslett       |
+| 4e089fe5fb97        hello-world         "/hello"            2 hours ago         Exited (0) 2 hours ago                              hopeful_dijkstra    |
+| 16d95cf2dba6        hello-world         "/hello"            16 hours ago        Exited (0) 16 hours ago                             wizardly_rubin      |
+|_________________________________________________________________________________________________________________________________________________________|
+
+
+This command lists all the container ever created
