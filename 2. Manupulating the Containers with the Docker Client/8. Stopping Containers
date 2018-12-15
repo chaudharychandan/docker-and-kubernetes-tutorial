@@ -1,0 +1,97 @@
+$ docker create busybox ping google.com
+
+1a6d6c9377fbefed8c1907552a57494dcb2d3f8ca42c419cf241ba0f509828d8
+
+$ docker start 1a6d6c9377fbefed8c1907552a57494dcb2d3f8ca42c419cf241ba0f509828d8
+
+1a6d6c9377fbefed8c1907552a57494dcb2d3f8ca42c419cf241ba0f509828d8
+
+$ docker logs 1a6d6c9377fbefed8c1907552a57494dcb2d3f8ca42c419cf241ba0f509828d8
+
+PING google.com (172.217.160.142): 56 data bytes
+64 bytes from 172.217.160.142: seq=0 ttl=53 time=17.438 ms
+64 bytes from 172.217.160.142: seq=1 ttl=53 time=25.817 ms
+64 bytes from 172.217.160.142: seq=2 ttl=53 time=20.655 ms
+64 bytes from 172.217.160.142: seq=3 ttl=53 time=22.528 ms
+64 bytes from 172.217.160.142: seq=4 ttl=53 time=51.377 ms
+64 bytes from 172.217.160.142: seq=5 ttl=53 time=20.013 ms
+64 bytes from 172.217.160.142: seq=6 ttl=53 time=48.529 ms
+64 bytes from 172.217.160.142: seq=7 ttl=53 time=54.918 ms
+64 bytes from 172.217.160.142: seq=8 ttl=53 time=43.099 ms
+64 bytes from 172.217.160.142: seq=9 ttl=53 time=38.685 ms
+
+$ docker ps
+
+________________________________________________________________________________________________________________________________________________
+|                                                                                                                                               |
+| CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES                 |
+| 1a6d6c9377fb        busybox             "ping google.com"   2 minutes ago       Up 2 minutes                            infallible_mcclintock |
+|_______________________________________________________________________________________________________________________________________________|
+
+
+
+    ______________________                                ____________________________________________
+   |                      |                              |            |            |                  |
+   |   Stop a Container   |                              |   docker   |    stop    |  <container id>  |
+   |______________________|                              |____________|____________|__________________|
+                    
+    ______________________                                ____________________________________________
+   |                      |                              |            |            |                  |
+   |   Kill a Container   |                              |   docker   |    kill    |  <container id>  |
+   |______________________|                              |____________|____________|__________________|
+
+
+
+                                                             C O N T A I N E R
+                                       ______________________________________________________________
+  ________          ___________       |     _________________                                        |
+ |        |        |           |      |    |                 |                                       |
+ |  stop  |--------|  SIGTERM  |---------> | ping google.com | Running Process                       |
+ |________|        |___________|  -------> |_________________|                                       |
+                                  |   |             |                                                |
+                                  |   |             | System Call                                    |
+  ________          ___________   |   |          ___v________________________________________________|____
+ |        |        |           |__|   |         |                                                         |
+ |  kill  |--------|  SIGKILL  |      |         |                                                         |
+ |________|        |___________|      |         |                     K E R N E L                         |
+                                      |         |                                                         |
+                                      |         |_________________________________________________________|
+                                      |              |                                               |
+                                      |              |                                               |
+                                      |              |  Portion of each made available to process    |
+                                      |______________v_______________________________________________|
+                                      |      _________        ___________        _________           |
+                                      |     |         |      |           |      |         |          |
+                                      |     |  R A M  |      |  Network  |      |  C P U  |          |
+                                      |     |_________|      |___________|      |_________|          |
+                                      |______________________________________________________________|
+                                      |                                                              |
+                                      |  _____   _____   _____   _____     ______   ______   ______  |
+                                      | |     | |     | |     | |     |   |      | |      | |      | |
+                                      | | bin | | dev | | etc | | sys |   | home | | proc | | root | |
+                                      | |_____| |_____| |_____| |_____|   |______| |______| |______| |
+                                      |                                                              |
+                                      |                     H A R D  D R I V E                       |
+                                      |______________________________________________________________|
+
+
+1. `docker stop <container id>` command issues a hardware signal to the process, SIGTERM message to the primary process inside that container.
+   It causes the process to shut down on its own time. The process will have a little bit of time to shut itself down and do a little bit of cleanup.
+
+2. However `docker stop <container id>` command issues SIGKILL signal to the primary running process inside the container. SIGKILL immediately shuts
+   down and doesn't do any additional work.
+
+3. If docker kill doesn't automatically stop in 10 seconds then Docker is going to automatically fallback to issuing docker kill command.
+
+
+$ docker stop 1a6d6c9377fb
+
+  After almost 10 seconds the container stopped.
+
+$ docker start 1a6d6c9377fb
+$ docker kill 1a6d6c9377fb
+
+  It immediately stops the container
+  
+
+
