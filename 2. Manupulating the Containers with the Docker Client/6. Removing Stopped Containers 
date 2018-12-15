@@ -1,0 +1,36 @@
+$ docker system prune
+
+ __________________________________________________________________
+|                                                                  |
+| WARNING! This will remove:                                       |
+|         - all stopped containers                                 |
+|         - all networks not used by at least one container        |
+|         - all dangling images                                    |
+|         - all dangling build cache                               |
+| Are you sure you want to continue? [y/N] y                       |
+|                                                                  |
+|                                                                  |
+|                                                                  |
+| Deleted Containers:                                              |
+| 9d8d04ee5cfc0d89167e39354fa620d616d7662cfb89375d2232d2dd50dd7a64 |
+| b72c09479d7f6d81d32e812209f142c3894b5e7c72caaa77be917cbe1e3665ab |
+| 9e583a69161e7822d206ef26021b0771a6b1d7fd82acc71dd6bb5e14fe5fdd49 |
+| 481b451ecf4c3eb9cc05a62d74ef12b1a0fadb29a9373c9eb2780a402296d15d |
+| 44ce8325c3ec2b1a75bc1272a8b533d14f020bc88848ea86e5abb581eebe914a |
+| 26ab633313d17d46768e339fcf362e5ff6e66e8fb4bdff38949f3f5fd8b2ab21 |
+| af4d37f900715a23d85677403f3165ed0306a01f721335cea2abb348b2fcc19b |
+| 8d093861b832796e498a7dce247c4e033f1f09103ffbdd00dd20d0af6aa0f616 |
+| e175162d9e1fb78847f8c055a138fc36feb0da2a248cd45f9ffbd86f932e72e9 |
+| 0d8686592bab0f36bb5639bd4b3eab3b5c40fd7d5fe96f7c70db097983f9a864 |
+| 4e089fe5fb9795e5edc5f6a102359a4c8d566dbe0153b96a2674b7a651394a25 |
+| 16d95cf2dba688d4c18476119f231e9d3ad4ae6168d36b161ac0992b72ce28c1 |
+|__________________________________________________________________|
+
+
+$ docker ps --all
+
+ _______________________________________________________________________________________________________________________________
+|                                                                                                                               |
+| CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES |
+|_______________________________________________________________________________________________________________________________|
+
