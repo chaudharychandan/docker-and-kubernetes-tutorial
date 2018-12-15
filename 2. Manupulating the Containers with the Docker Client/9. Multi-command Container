@@ -1,0 +1,21 @@
+$ docker run redis
+
+    Unable to find image 'redis:latest' locally
+    latest: Pulling from library/redis
+    a5a6f2f73cd8: Pull complete
+    a6d0f7688756: Pull complete
+    53e16f6135a5: Pull complete
+    f52b0cc4e76a: Pull complete
+    e841feee049e: Pull complete
+    ccf45e5191d0: Pull complete
+    Digest: sha256:010a8bd5c6a9d469441aa35187d18c181e3195368bce309348b3ee639fce96e0
+    Status: Downloaded newer image for redis:latest
+    1:C 15 Dec 2018 18:58:12.482 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+    1:C 15 Dec 2018 18:58:12.482 # Redis version=5.0.3, bits=64, commit=00000000, modified=0, pid=1, just started
+    1:C 15 Dec 2018 18:58:12.482 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+    1:M 15 Dec 2018 18:58:12.483 * Running mode=standalone, port=6379.
+    1:M 15 Dec 2018 18:58:12.483 # WARNING: The TCP backlog setting of 511 cannot be enforced because /proc/sys/net/core/somaxconn is set to the lower value of 128.
+    1:M 15 Dec 2018 18:58:12.483 # Server initialized
+    1:M 15 Dec 2018 18:58:12.483 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+    1:M 15 Dec 2018 18:58:12.483 # WARNING you have Transparent Huge Pages (THP) support enabled in your kernel. This will create latency and memory usage issues with Redis. To fix this issue run the command 'echo never > /sys/kernel/mm/transparent_hugepage/enabled' as root, and add it to your /etc/rc.local in order to retain the setting after a reboot. Redis must be restarted after THP is disabled.
+    1:M 15 Dec 2018 18:58:12.483 * Ready to accept connections

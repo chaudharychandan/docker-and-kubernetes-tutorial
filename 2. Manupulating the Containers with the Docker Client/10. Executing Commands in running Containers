@@ -1,0 +1,62 @@
+                          C O N T A I N E R
+    ______________________________________________________________
+   |     ______________      _____________                        |
+   |    |              |    |             |                       |
+   |    | redis-server |____|  redis-cli  |   Running Processes   |
+   |    |______________| |  |_____________|                       |
+   |          ___________v________________________________________|____
+   |         |                                                         |
+   |         |                                                         |
+   |         |                     K E R N E L                         |
+   |         |_________________________________________________________|
+   |              |                                               |
+   |              |                                               |
+   |              |  Portion of each made available to process    |
+   |______________v_______________________________________________|
+   |      _________        ___________        _________           |
+   |     |         |      |           |      |         |          |
+   |     |  R A M  |      |  Network  |      |  C P U  |          |
+   |     |_________|      |___________|      |_________|          |
+   |______________________________________________________________|
+   |                                                              |
+   |  _____   _____   _____   _____     ______   ______   ______  |
+   | |     | |     | |     | |     |   |      | |      | |      | |
+   | | bin | | dev | | etc | | sys |   | home | | proc | | root | |
+   | |_____| |_____| |_____| |_____|   |______| |______| |______| |
+   |                                                              |
+   |                     H A R D  D R I V E                       |
+   |______________________________________________________________|
+
+
+
+
+   __________________________
+  |                          |
+  |  Execute and additional  |
+  |  command in a container  |
+  |__________________________|
+  
+
+                          Run another command      id of the container
+               _______________________________________________________________
+              |            |           |         |                |           |
+              |   docker   |    run    |   -lt   | <container id> |  command  |
+              |____________|___________|_________|________________|___________|
+ 
+              Reference the          Allow us to provide
+              Docker Client         input to the container
+
+
+$ docker ps
+
+  CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS               NAMES
+  bed6e7af664b        redis               "docker-entrypoint.s…"   23 minutes ago      Up 22 minutes       6379/tcp            modest_blackwell
+
+$ docker exec -it bed6e7af664b redis-cli
+
+    127.0.0.1:6379> set myvalue 5
+    OK
+    127.0.0.1:6379> get myvalue
+    "5"
+    127.0.0.1:6379>
+
