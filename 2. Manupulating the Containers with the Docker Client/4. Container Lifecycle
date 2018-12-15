@@ -1,0 +1,62 @@
+
+   ________________             _________________             ________________
+  |                |           |                 |           |                |
+  |   docker run   |     =     |  docker create  |     +     |  docker start  |
+  |________________|           |_________________|           |________________|
+
+
+
+                                                                      Try to create
+                                                                      the Container
+    ______________________                                ____________________________________________
+   |                      |                              |            |            |                  |
+   |  Create a Container  |                              |   docker   |   create   |   <image name>   |
+   |______________________|                              |____________|____________|__________________|
+                    
+                                                         Reference the            Name of image to use
+                                                         Docker Client             for this computer
+
+
+                                                                      Try to start
+                                                                      the Container
+    _______________________                               ___________________________________________
+   |                       |                             |            |           |                  |
+   |   Start a Container   |                             |   docker   |   start   |  <container id>  |
+   |_______________________|                             |____________|___________|__________________|
+                    
+                                                         Reference the               Id of the image
+                                                         Docker Client                  to start
+
+
+$ docker create hello-world
+
+b72c09479d7f6d81d32e812209f142c3894b5e7c72caaa77be917cbe1e3665ab
+
+$ docker start -a b72c09479d7f6d81d32e812209f142c3894b5e7c72caaa77be917cbe1e3665ab
+
+ _________________________________________________________________________________
+|                                                                                 |
+| Hello from Docker!                                                              |
+| This message shows that your installation appears to be working correctly.      |
+|                                                                                 |
+| To generate this message, Docker took the following steps:                      |
+|  1. The Docker client contacted the Docker daemon.                              |
+|  2. The Docker daemon pulled the "hello-world" image from the Docker Hub.       |
+|     (amd64)                                                                     |
+|  3. The Docker daemon created a new container from that image which runs the    |
+|     executable that produces the output you are currently reading.              |
+|  4. The Docker daemon streamed that output to the Docker client, which sent it  |
+|     to your terminal.                                                           |
+|                                                                                 |
+| To try something more ambitious, you can run an Ubuntu container with:          |
+|  $ docker run -it ubuntu bash                                                   |
+|                                                                                 |
+| Share images, automate workflows, and more with a free Docker ID:               |
+|  https://hub.docker.com/                                                        |
+|                                                                                 |
+| For more examples and ideas, visit:                                             |
+|  https://docs.docker.com/get-started/                                           |
+|_________________________________________________________________________________|
+
+`-a` option is what's going to make docker actaully watch the output from the container and print out to the terminal
+only `docker start <id>` is not going to show the output coming from the container out to the terminal
