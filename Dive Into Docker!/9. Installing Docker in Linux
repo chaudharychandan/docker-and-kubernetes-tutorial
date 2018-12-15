@@ -1,0 +1,19 @@
+1. Installation
+
+  https://docs.docker.com/install/linux/docker-ce/ubuntu/#set-up-the-repository
+
+  $ sudo docker run hello-world
+
+2. Installing Docker Compose
+
+  https://docs.docker.com/compose/install/#install-compose
+
+  $ docker-compose -v
+
+3. Run without Sudo
+
+  https://docs.docker.com/install/linux/linux-postinstall/#manage-docker-as-a-non-root-user
+
+4. Start on Boot
+
+  https://docs.docker.com/install/linux/linux-postinstall/#configure-docker-to-start-on-boot
