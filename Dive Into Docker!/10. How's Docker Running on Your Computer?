@@ -1,0 +1,33 @@
+The feature of namespacing and control groups is specific to linux OS not to Windows/MacOS.
+When docker for MacOS/Windows gets installed, it installs Linux Virtual Machine under the hood.
+When docker is running, it actually runs the Linux VM inside. Inside this VM where all the
+containers get created. 
+
+
+ ___________________________________________________
+|    ___________     ___________     ___________    |
+|   |           |   |           |   |           |   |
+|   |  RUNNING  |   |  RUNNING  |   |  RUNNING  |   |
+|   |  PROCESS  |   |  PROCESS  |   |  PROCESS  |   |
+|   |___________|   |___________|   |___________|   |
+|         |               |               |         |
+|         |               |               |         |
+|         |               |               |         |
+|         |               |               |         |
+|_________v_______________v_______________v_________|
+|                                                   |
+|                   LINUX KERNAL                    |
+|___________________________________________________|
+|                                                   |
+|      L I N U X  V I R T U A L  M A C H I N E      |
+|___________________________________________________|
+                          |
+ _________________________v_________________________
+|                                                   |  
+|                 MacOS / Windows                   |
+|___________________________________________________|
+                          |
+ _________________________v_________________________
+|                                                   |  
+|        C O M P U T E R  H A R D W A R E           |
+|___________________________________________________|
