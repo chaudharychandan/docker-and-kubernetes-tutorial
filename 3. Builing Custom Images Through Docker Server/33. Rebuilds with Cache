@@ -1,0 +1,121 @@
+Addition of `RUN apk add --update gcc` command
+ _______________________________________________________________
+|                                                               |
+|   # Use an existing docker image as a base                    |
+|   FROM alpine                                                 |
+|                                                               |
+|   # Download and install dependencies                         |
+|   RUN apk add --update redis                                  |
+|   RUN apk add --update gcc                                    |
+|   # Tell the image what to do when it starts as a container   |
+|   CMD [ "redis-server" ]                                      |
+|_______________________________________________________________|
+
+
+$ docker build .
+
+ ____________________________________________________
+|                                                    |
+|  Sending build context to Docker daemon  2.048kB   |
+|  Step 1/4 : FROM alpine                            |
+|   ---> 196d12cf6ab1                                |
+|  Step 2/4 : RUN apk add --update redis             |  Docker uses the cache and picks up the docker image from the last build.
+|   ---> Using cache                                 |  Docker executes all the commands again after it sees any different command
+|   ---> e4c6b6e222a0                                |  comparing with sequence of commands of Dockerfile of last build.
+|  Step 3/4 : RUN apk add --update gcc               |  Like here, Docker reused the image of step till redis installation command
+|   ---> Running in 8e1029b8f57f                     |  and executes all the commands from gcc installation.
+|  (1/11) Installing binutils (2.30-r5)              |
+|  (2/11) Installing gmp (6.1.2-r1)                  |
+|  (3/11) Installing isl (0.18-r0)                   |
+|  (4/11) Installing libgomp (6.4.0-r9)              |
+|  (5/11) Installing libatomic (6.4.0-r9)            |
+|  (6/11) Installing pkgconf (1.5.3-r0)              |
+|  (7/11) Installing libgcc (6.4.0-r9)               |
+|  (8/11) Installing mpfr3 (3.1.5-r1)                |
+|  (9/11) Installing mpc1 (1.0.3-r1)                 |
+|  (10/11) Installing libstdc++ (6.4.0-r9)           |
+|  (11/11) Installing gcc (6.4.0-r9)                 |
+|  Executing busybox-1.28.4-r1.trigger               |
+|  OK: 90 MiB in 25 packages                         |
+|  Removing intermediate container 8e1029b8f57f      |
+|   ---> f256262cb7c5                                |
+|  Step 4/4 : CMD [ "redis-server" ]                 |
+|   ---> Running in 741d06bb9036                     |
+|  Removing intermediate container 741d06bb9036      |
+|   ---> 0a3cceecd557                                |
+|  Successfully built 0a3cceecd557                   |
+|____________________________________________________|
+
+$ docker build .
+
+ _________________________________________________
+|                                                 |
+| Sending build context to Docker daemon  2.048kB |
+| Step 1/4 : FROM alpine                          |
+|  ---> 196d12cf6ab1                              |
+| Step 2/4 : RUN apk add --update redis           |
+|  ---> Using cache                               |
+|  ---> e4c6b6e222a0                              |
+| Step 3/4 : RUN apk add --update gcc             |  Docker reuses the cached image because it has already created an image
+|  ---> Using cache                               |  using all the steps in the Dockerfile in the same sequence and there 
+|  ---> f256262cb7c5                              |  is no new command when we ran the build command again.
+| Step 4/4 : CMD [ "redis-server" ]               |
+|  ---> Using cache                               |
+|  ---> 0a3cceecd557                              |
+| Successfully built 0a3cceecd557                 |
+|_________________________________________________|
+
+
+Change in Dockerfile
+ _______________________________________________________________
+|                                                               |
+|   # Use an existing docker image as a base                    |
+|   FROM alpine                                                 |  The Dockerfile has common step only till `FROM alpine` from the last
+|                                                               |  build's Dockerfile. So, Docker will only use the cached image of alpine
+|   # Download and install dependencies                         |  and performs all the steps after that without using any cached image.
+|   RUN apk add --update gcc                                    |
+|   RUN apk add --update redis                                  |
+|   # Tell the image what to do when it starts as a container   |
+|   CMD [ "redis-server" ]                                      |
+|_______________________________________________________________|
+
+
+ ______________________________________________________________________________________
+|                                                                                      |
+|   Sending build context to Docker daemon  2.048kB                                    |
+|   Step 1/4 : FROM alpine                                                             |
+|    ---> 196d12cf6ab1                                                                 |
+|   Step 2/4 : RUN apk add --update gcc                                                |
+|    ---> Running in 6086952f2be2                                                      |
+|   fetch http://dl-cdn.alpinelinux.org/alpine/v3.8/main/x86_64/APKINDEX.tar.gz        |
+|   fetch http://dl-cdn.alpinelinux.org/alpine/v3.8/community/x86_64/APKINDEX.tar.gz   |
+|   (1/11) Installing binutils (2.30-r5)                                               |
+|   (2/11) Installing gmp (6.1.2-r1)                                                   |
+|   (3/11) Installing isl (0.18-r0)                                                    |
+|   (4/11) Installing libgomp (6.4.0-r9)                                               |
+|   (5/11) Installing libatomic (6.4.0-r9)                                             |
+|   (6/11) Installing pkgconf (1.5.3-r0)                                               |
+|   (7/11) Installing libgcc (6.4.0-r9)                                                |
+|   (8/11) Installing mpfr3 (3.1.5-r1)                                                 |
+|   (9/11) Installing mpc1 (1.0.3-r1)                                                  |
+|   (10/11) Installing libstdc++ (6.4.0-r9)                                            |
+|   (11/11) Installing gcc (6.4.0-r9)                                                  |
+|   Executing busybox-1.28.4-r1.trigger                                                |
+|   OK: 89 MiB in 24 packages                                                          |
+|   Removing intermediate container 6086952f2be2                                       |
+|    ---> 60e9443f99d2                                                                 |
+|   Step 3/4 : RUN apk add --update redis                                              |
+|    ---> Running in b40a751dd72a                                                      |
+|   (1/1) Installing redis (4.0.11-r0)                                                 |
+|   Executing redis-4.0.11-r0.pre-install                                              |
+|   Executing redis-4.0.11-r0.post-install                                             |
+|   Executing busybox-1.28.4-r1.trigger                                                |
+|   OK: 90 MiB in 25 packages                                                          |
+|   Removing intermediate container b40a751dd72a                                       |
+|    ---> b8866df921ab                                                                 |
+|   Step 4/4 : CMD [ "redis-server" ]                                                  |
+|    ---> Running in 61fa66bbe0a0                                                      |
+|   Removing intermediate container 61fa66bbe0a0                                       |
+|    ---> 6e67a54e15d6                                                                 |
+|   Successfully built 6e67a54e15d6                                                    |
+|______________________________________________________________________________________|
