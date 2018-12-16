@@ -1,0 +1,57 @@
+   __________________________
+  |                          |
+  |  Tagging an image        |
+  |__________________________|
+
+
+                                                    Tags the image
+               ___________________________________________________________________________
+              |            |           |                                    |             |
+              |   docker   |   build   |  -t chandanchaudhary/redis:latest  |      .      |
+              |____________|___________|____________________________________|_____________|
+
+                                                                          Specifies the directory of
+                                                                          the files/folders to use
+                                                                          for the build.
+
+
+
+                -t chandanchaudhary/redis:latest
+                               |
+                               |
+ ______________________________v____________________________
+|                        |     |           |     |          |
+| docchandanchaudharyker |  /  |   redis   |  :  |  latest  |
+|________________________|_____|___________|_____|__________|
+            |                        |                 |
+            |                        |                 |
+            v                        v                 v
+    Your docker hub id       Repo/Project name      Version
+
+
+$ docker build -t chandanchaudhary/redis:latest .
+
+
+ ___________________________________________________
+|                                                   |
+| Sending build context to Docker daemon  2.048kB   |
+| Step 1/4 : FROM alpine                            |
+|  ---> 196d12cf6ab1                                |
+| Step 2/4 : RUN apk add --update redis             |
+|  ---> Using cache                                 |
+|  ---> e4c6b6e222a0                                |
+| Step 3/4 : RUN apk add --update gcc               |
+|  ---> Using cache                                 |
+|  ---> f256262cb7c5                                |
+| Step 4/4 : CMD [ "redis-server" ]                 |
+|  ---> Using cache                                 |
+|  ---> 0a3cceecd557                                |
+| Successfully built 0a3cceecd557                   |
+| Successfully tagged chandanchaudhary/redis:latest |
+|___________________________________________________|
+
+$ docker run chandanchaudhary/redis
+
+If you don't metion the Version it will run the latest version
+
+Technically the version number is the tag and everything is repository or the project name
