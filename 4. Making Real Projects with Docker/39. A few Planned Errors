@@ -1,0 +1,51 @@
+
+                 ____________________________________________________________________________________
+                |                               |                           |                        |
+                | Have to install dependencies  |  Install dependencies by  |   Assumes 'npm' is     |
+            ___ | before running the app        |  running `npm install`    |      installed!        |
+           |    |_______________________________|___________________________|________________________|
+           |
+ __________|___
+|             |
+| NODEJS APPS |
+|_____________|
+           |
+           |     _____________________________________________________________________________________
+           |___ |                               |                           |                        |
+                |     Have to run a command     |  Install dependencies by  |   Assumes 'npm' is     |
+                |      to start the server      |  running `npm install`    |      installed!        |
+                |_______________________________|___________________________|________________________|
+
+
+
+            Template                                Redis                           Node
+ _______________________________          _________________________             ________________________
+|                               |        |                         |           |                        |
+|     Specify base image        |------> |       From Alpine       |---------> |       From Alpine      |
+|_______________________________|        |_________________________|           |________________________|
+
+
+ _______________________________          ____________________________          ________________________
+|                               |        |                            |        |                        |
+|     Run some commands to      |------> | RUN apk add --update redis |------> |       From Alpine      |
+|  install additional programs  |        |____________________________|        |________________________|
+|_______________________________|
+
+ _______________________________          ____________________________          ________________________
+|                               |        |                            |        |                        |
+|   Specify a command to run    |------> |    CMD ["redis-server"]    |------> |  CMD ["npm", "start"]  |
+|     on container startup      |        |____________________________|        |________________________|
+|_______________________________|
+
+
+Inside simpleweb project folder
+
+$ docker build .
+
+Sending build context to Docker daemon  1.903MB
+Step 1/3 : FROM alpine
+ ---> 196d12cf6ab1
+Step 2/3 : RUN npm install
+ ---> Running in bd9217848686
+/bin/sh: npm: not found
+The command '/bin/sh -c npm install' returned a non-zero code: 127
