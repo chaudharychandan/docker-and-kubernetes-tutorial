@@ -1,0 +1,36 @@
+ $ docker run -it chandanchaudhary/simpleweb sh
+
+/ # ls  -ltr
+total 88
+-rw-rw-r--    1 root     root           239 Dec 18 19:17 package.json
+drwxr-xr-x    1 root     root          4096 Dec 20 22:25 var
+drwxr-xr-x    2 root     root          4096 Dec 20 22:25 srv
+drwxr-xr-x    2 root     root          4096 Dec 20 22:25 sbin
+drwxr-xr-x    2 root     root          4096 Dec 20 22:25 run
+drwxr-xr-x    2 root     root          4096 Dec 20 22:25 mnt
+drwxr-xr-x    5 root     root          4096 Dec 20 22:25 media
+drwxr-xr-x    1 root     root          4096 Dec 20 22:25 lib
+drwxr-xr-x    1 root     root          4096 Dec 21 02:06 home
+drwxrwxrwt    1 root     root          4096 Dec 21 02:39 tmp
+drwxr-xr-x    3 root     root          4096 Dec 21 02:40 opt
+drwxr-xr-x    1 root     root          4096 Dec 21 02:40 usr
+drwxr-xr-x    1 root     root          4096 Dec 21 02:40 bin
+-rw-rw-r--    1 root     root           188 Dec 22 04:21 index.js
+-rw-rw-r--    1 root     root           138 Dec 22 04:31 Dockerfile
+-rw-r--r--    1 root     root         13092 Dec 22 04:31 package-lock.json
+drwxr-xr-x   51 root     root          4096 Dec 22 04:31 node_modules
+drwxr-xr-x    1 root     root          4096 Dec 22 09:16 etc
+dr-xr-xr-x   13 root     root             0 Dec 22 09:16 sys
+dr-xr-xr-x  295 root     root             0 Dec 22 09:16 proc
+drwxr-xr-x    5 root     root           360 Dec 22 09:16 dev
+drwx------    1 root     root          4096 Dec 22 09:17 root
+
+
+The build files get copied to the root directory. We can mention the directory in which the contents should be copied and the commands should execute.
+ _____________________________________
+|                  |                  |
+|    WORKDIR       |     /usr/app     |
+|__________________|__________________|
+
+Any following command will be executed relative to the path in the container.
+

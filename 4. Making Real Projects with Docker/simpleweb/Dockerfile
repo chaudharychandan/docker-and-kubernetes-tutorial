@@ -2,6 +2,8 @@
 
 FROM node:alpine
 
+WORKDIR /usr/app
+
 # Install  the dependencies
 COPY ./ ./
 RUN npm install
