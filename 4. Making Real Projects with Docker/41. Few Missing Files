@@ -1,0 +1,2 @@
+When the `npm install` command runs there should be a package.json file available
+which is not available inside the container created using node:alpine image.
