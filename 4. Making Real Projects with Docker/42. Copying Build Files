@@ -1,0 +1,49 @@
+
+
+                            Place to copy stuff
+                            to inside the container
+
+   ________________________________________
+  |             |             |            |
+  |    COPY     |      ./     |     ./     |
+  |_____________|_____________|____________|
+
+          Path to folder to copy from
+          on your machine relative to
+              the build context
+
+Add COPY command in Dockerfile
+
+$ docker build -t chanadanchaudhary/simpleweb .
+ ____________________________________________________________________________________
+|                                                                                    |
+|  Sending build context to Docker daemon  4.096kB                                   |
+|  Step 1/4 : FROM node:alpine                                                       |
+|   ---> 2ead1ce61ccb                                                                |
+|  Step 2/4 : COPY ./ ./                                                             |
+|   ---> d4e55ac55b33                                                                |
+|  Step 3/4 : RUN npm install                                                        |
+|   ---> Running in c4cfc2b32b5d                                                     |
+|  npm notice created a lockfile as package-lock.json. You should commit this file.  |
+|  npm WARN simpleweb@1.0.0 No description                                           |
+|  npm WARN simpleweb@1.0.0 No repository field.                                     |
+|                                                                                    |
+|  added 48 packages from 36 contributors and audited 121 packages in 2.534s         |
+|  found 0 vulnerabilities                                                           |
+|                                                                                    |
+|  Removing intermediate container c4cfc2b32b5d                                      |
+|   ---> 29bce3adb6de                                                                |
+|  Step 4/4 : CMD ["npm", "start"]                                                   |
+|   ---> Running in 071c849fafa1                                                     |
+|  Removing intermediate container 071c849fafa1                                      |
+|   ---> 8b3687476dbb                                                                |
+|  Successfully built 8b3687476dbb                                                   |
+|  Successfully tagged chandanchaudhary/simpleweb:latest                             |
+|____________________________________________________________________________________|
+  
+$ docker run chanadanchaudhary/simpleweb
+
+> simpleweb@1.0.0 start /
+> node index.js
+
+Listening to port 8080
