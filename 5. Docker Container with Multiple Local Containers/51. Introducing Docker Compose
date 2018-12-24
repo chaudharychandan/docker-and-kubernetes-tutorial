@@ -1,0 +1,78 @@
+ ________________________________________________________________
+|                                                                |
+|   ______________________             ______________________    |
+|  |                      |           |                      |   |
+|  |   Docker Container   |           |   Docker Container   |   |
+|  |______________________|           |______________________|   |
+|  |                      |           |                      |   |
+|  |       Node App       |           |        Redis         |   |
+|  |______________________|           |______________________|   |
+|                                                                |
+|________________________________________________________________|
+
+
+$ docker run redis
+
+$ docker run chandanchaudhary/visits
+ _____________________________________________________________________________________________________________
+|                                                                                                             |
+|                                                                                                             |
+|   > visits@1.0.0 start /app                                                                                 |
+|   > node index.js                                                                                           |
+|                                                                                                             |
+|   Listening to port 8081                                                                                    |
+|   events.js:174                                                                                             |
+|         throw er; // Unhandled 'error' event                                                                |
+|         ^                                                                                                   |
+|                                                                                                             |
+|   Error: Redis connection to 127.0.0.1:6379 failed - connect ECONNREFUSED 127.0.0.1:6379                    |
+|       at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1082:14)                                       |
+|   Emitted 'error' event at:                                                                                 |
+|       at RedisClient.on_error (/app/node_modules/redis/index.js:406:14)                                     |
+|       at Socket.<anonymous> (/app/node_modules/redis/index.js:279:14)                                       |
+|       at Socket.emit (events.js:189:13)                                                                     |
+|       at emitErrorNT (internal/streams/destroy.js:82:8)                                                     |
+|       at emitErrorAndCloseNT (internal/streams/destroy.js:50:3)                                             |
+|       at process.internalTickCallback (internal/process/next_tick.js:72:19)                                 |
+|   npm ERR! code ELIFECYCLE                                                                                  |
+|   npm ERR! errno 1                                                                                          |
+|   npm ERR! visits@1.0.0 start: `node index.js`                                                              |
+|   npm ERR! Exit status 1                                                                                    |
+|   npm ERR!                                                                                                  |
+|   npm ERR! Failed at the visits@1.0.0 start script.                                                         |
+|   npm ERR! This is probably not a problem with npm. There is likely additional logging output above.        |
+|                                                                                                             |
+|   npm ERR! A complete log of this run can be found in:                                                      |
+|   npm ERR!     /root/.npm/_logs/2018-12-24T03_32_48_990Z-debug.log                                          |
+|                                                                                                             |
+|_____________________________________________________________________________________________________________|
+
+
+Both processes are running inside two different containers which 
+has no direct connection. To achieve a connection between these
+processes a networking intrastructure is required. We can use
+Docker Compose for this.
+
+
+
+
+                                                                      D O C K E R    C O M P O S E
+                                                           ___________________________________________________
+                                                          |                                                   |
+                                                          |      Seperate CLI that gets installed along       |
+                                                          |                  with Docker                      |
+                                                          |___________________________________________________|
+
+
+                                                           ___________________________________________________
+                                                          |                                                   |
+                                                          |    Used to start up multiple Docker containers    |
+                                                          |                at the same time                   |
+                                                          |___________________________________________________|
+
+
+                                                           ___________________________________________________
+                                                          |                                                   |
+                                                          |    Automates some of the long-winded arguments    |
+                                                          |          we were passing to docker run            |
+                                                          |___________________________________________________|
