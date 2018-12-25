@@ -1,0 +1,18 @@
+$ docker-compose up -d 
+runs in background
+ ______________________________________________________________
+|                                                              |
+|  Creating network "visits_default" with the default driver   |
+|  Creating visits_node-app_1_bb4df9a6aad4     ... done        |
+|  Creating visits_redis-server_1_eb73efd4f17e ... done        |
+|______________________________________________________________|
+
+$ docker-compose down
+ _________________________________________________________
+|                                                         |
+|  Stopping visits_redis-server_1_1c8c5d73ed62 ... done   |
+|  Stopping visits_node-app_1_eb72dcfaf1fa     ... done   |
+|  Removing visits_redis-server_1_1c8c5d73ed62 ... done   |
+|  Removing visits_node-app_1_eb72dcfaf1fa     ... done   |
+|  Removing network visits_default                        |
+|_________________________________________________________|
