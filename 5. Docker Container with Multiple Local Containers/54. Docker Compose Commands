@@ -1,0 +1,66 @@
+
+     __________________________
+    |                          |
+    |    docker run myimage    |          docker-compose up
+    |__________________________|
+
+     __________________________
+    |                          |
+    |      docker build .      |
+    |__________________________|          docker-compose up --build
+    |                          |
+    |     docker run myimage   |
+    |__________________________|
+
+
+
+
+$ docker-compose up
+
+Creating network "visits_default" with the default driver
+Building node-app
+Step 1/6 : FROM node:alpine
+ ---> 2ead1ce61ccb
+Step 2/6 : WORKDIR /app
+ ---> Using cache
+ ---> 2f6876d451e0
+Step 3/6 : COPY ./package.json ./
+ ---> acf815175e67
+Step 4/6 : RUN npm install
+ ---> Running in a944c36b3256
+npm notice created a lockfile as package-lock.json. You should commit this file.
+npm WARN visits@1.0.0 No description
+npm WARN visits@1.0.0 No repository field.
+
+added 52 packages from 40 contributors and audited 125 packages in 4.319s
+found 0 vulnerabilities
+
+Removing intermediate container a944c36b3256
+ ---> 340267d02436
+Step 5/6 : COPY ./ ./
+ ---> f8ce6c5e1517
+Step 6/6 : CMD ["npm", "start"]
+ ---> Running in 9f89ab7d4cbe
+Removing intermediate container 9f89ab7d4cbe
+ ---> 58256ce57e58
+Successfully built 58256ce57e58
+Successfully tagged visits_node-app:latest
+WARNING: Image for service node-app was built because it did not already exist. To rebuild this image you must use `docker-compose build` or `docker-compose up --build`.
+Creating visits_redis-server_1_81a5e6d6d04a ... done
+Creating visits_node-app_1_c47d25af6d43     ... done
+Attaching to visits_redis-server_1_83c6f94b1a37, visits_node-app_1_f41bef53c321
+redis-server_1_83c6f94b1a37 | 1:C 25 Dec 2018 07:47:58.767 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+redis-server_1_83c6f94b1a37 | 1:C 25 Dec 2018 07:47:58.767 # Redis version=5.0.3, bits=64, commit=00000000, modified=0, pid=1, just started
+redis-server_1_83c6f94b1a37 | 1:C 25 Dec 2018 07:47:58.767 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+redis-server_1_83c6f94b1a37 | 1:M 25 Dec 2018 07:47:58.772 * Running mode=standalone, port=6379.
+redis-server_1_83c6f94b1a37 | 1:M 25 Dec 2018 07:47:58.773 # WARNING: The TCP backlog setting of 511 cannot be enforced because /proc/sys/net/core/somaxconn is set to the lower value of 128.
+redis-server_1_83c6f94b1a37 | 1:M 25 Dec 2018 07:47:58.773 # Server initialized
+redis-server_1_83c6f94b1a37 | 1:M 25 Dec 2018 07:47:58.773 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+redis-server_1_83c6f94b1a37 | 1:M 25 Dec 2018 07:47:58.773 # WARNING you have Transparent Huge Pages (THP) support enabled in your kernel. This will create latency and memory usage issues with Redis. To fix this issue run the command 'echo never > /sys/kernel/mm/transparent_hugepage/enabled' as root, and add it to your /etc/rc.local in order to retain the setting after a reboot. Redis must be restarted after THP is disabled.
+redis-server_1_83c6f94b1a37 | 1:M 25 Dec 2018 07:47:58.773 * Ready to accept connections
+node-app_1_f41bef53c321 | 
+node-app_1_f41bef53c321 | > visits@1.0.0 start /app
+node-app_1_f41bef53c321 | > node index.js
+node-app_1_f41bef53c321 | 
+node-app_1_f41bef53c321 | Listening to port 8081
+
