@@ -1,0 +1,32 @@
+Make changes in the app to crash
+
+$ docker-compose up
+
+Creating network "visits_default" with the default driver
+Creating visits_redis-server_1_1f0f5c016e85 ... done
+Creating visits_node-app_1_d43f6a55da8a     ... done
+Attaching to visits_node-app_1_694a90ff0d78, visits_redis-server_1_480ef1597425
+node-app_1_694a90ff0d78 | 
+node-app_1_694a90ff0d78 | > visits@1.0.0 start /app
+node-app_1_694a90ff0d78 | > node index.js
+node-app_1_694a90ff0d78 | 
+node-app_1_694a90ff0d78 | Listening to port 8081
+redis-server_1_480ef1597425 | 1:C 25 Dec 2018 12:03:33.588 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+redis-server_1_480ef1597425 | 1:C 25 Dec 2018 12:03:33.588 # Redis version=5.0.3, bits=64, commit=00000000, modified=0, pid=1, just started
+redis-server_1_480ef1597425 | 1:C 25 Dec 2018 12:03:33.588 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+redis-server_1_480ef1597425 | 1:M 25 Dec 2018 12:03:33.589 * Running mode=standalone, port=6379.
+redis-server_1_480ef1597425 | 1:M 25 Dec 2018 12:03:33.589 # WARNING: The TCP backlog setting of 511 cannot be enforced because /proc/sys/net/core/somaxconn is set to the lower value of 128.
+redis-server_1_480ef1597425 | 1:M 25 Dec 2018 12:03:33.589 # Server initialized
+redis-server_1_480ef1597425 | 1:M 25 Dec 2018 12:03:33.589 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+redis-server_1_480ef1597425 | 1:M 25 Dec 2018 12:03:33.589 # WARNING you have Transparent Huge Pages (THP) support enabled in your kernel. This will create latency and memory usage issues with Redis. To fix this issue run the command 'echo never > /sys/kernel/mm/transparent_hugepage/enabled' as root, and add it to your /etc/rc.local in order to retain the setting after a reboot. Redis must be restarted after THP is disabled.
+redis-server_1_480ef1597425 | 1:M 25 Dec 2018 12:03:33.589 * Ready to accept connections
+visits_node-app_1_694a90ff0d78 exited with code 0
+
+
+$ docker ps
+
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS               NAMES
+f550297a5915        redis               "docker-entrypoint.s…"   2 minutes ago       Up 2 minutes        6379/tcp            visits_redis-server_1_480ef1597425
+
+
+Only one container is running i.e. redis. App crashed and the container is stopped.
