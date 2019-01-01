@@ -10,7 +10,7 @@
 | NODEJS APPS |
 |_____________|
            |
-           |     _____________________________________________________________________________________
+           |     ____________________________________________________________________________________
            |___ |                               |                           |                        |
                 |     Have to run a command     |  Install dependencies by  |   Assumes 'npm' is     |
                 |      to start the server      |  running `npm install`    |      installed!        |
