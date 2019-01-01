@@ -1,0 +1,22 @@
+Removing node_modules folder and build again since it is not required to be copied over
+
+$ docker build -f Dockerfile.dev .
+
+Step 1/6 : FROM node:alpine
+ ---> 2ead1ce61ccb
+Step 2/6 : WORKDIR /app
+ ---> Using cache
+ ---> 2f6876d451e0
+Step 3/6 : COPY package.json .
+ ---> Using cache
+ ---> 989b5134b1f0
+Step 4/6 : RUN npm install
+ ---> Using cache
+ ---> 179998f7853d
+Step 5/6 : COPY . .
+ ---> Using cache
+ ---> 5e94e9b4f679
+Step 6/6 : CMD ["npm", "run", "start"]
+ ---> Using cache
+ ---> 1e08a076da9a
+Successfully built 1e08a076da9a
