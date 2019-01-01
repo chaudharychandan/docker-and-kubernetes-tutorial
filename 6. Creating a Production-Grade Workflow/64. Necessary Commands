@@ -1,0 +1,12 @@
+A create-react-app Project
+
+ ___________________________________________________________________________
+|               |                                                           |
+| npm run start |  Start up a development server. for development use only  |
+|_______________|___________________________________________________________|
+|               |                                                           |
+| npm run test  |  Runs tests  associated with the project                  |
+|_______________|___________________________________________________________|
+|               |                                                           |
+| npm run build |  Builds a production version of the application           |
+|_______________|___________________________________________________________|
