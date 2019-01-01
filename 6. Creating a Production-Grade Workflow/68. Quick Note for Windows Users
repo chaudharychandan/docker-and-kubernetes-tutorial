@@ -1,0 +1,11 @@
+Quick Note for Windows Users
+Section 6, Lecture 68
+If you are running on Windows, please read this: Create-React-App has some issues detecting when files get changed on Windows based machines.  To fix this, please do the following:
+
+In the root project directory, create a file called .env
+
+Add the following text to the file and save it: CHOKIDAR_USEPOLLING=true
+
+That's all!
+
+For more on why this is required, you can check out: https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#npm-start-doesnt-detect-changes
