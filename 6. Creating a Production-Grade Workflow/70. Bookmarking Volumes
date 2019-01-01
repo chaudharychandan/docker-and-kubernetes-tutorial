@@ -1,0 +1,7 @@
+Booking volumes
+
+-v a:b 
+
+When we use colon syntax, we are trying to say we want to map up a folder inside the container to outside the container.
+When we don't use the colon, that means we want this to be just placeholder for the folder that is inside the container,
+don't try to map it against anything.
