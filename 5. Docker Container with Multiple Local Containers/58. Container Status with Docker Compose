@@ -1,0 +1,6 @@
+$ docker-compose ps
+
+               Name                             Command               State           Ports         
+----------------------------------------------------------------------------------------------------
+visits_node-app_1_f7276da87825       npm start                        Up      0.0.0.0:4001->8081/tcp
+visits_redis-server_1_7c71628030b0   docker-entrypoint.sh redis ...   Up      6379/tcp
