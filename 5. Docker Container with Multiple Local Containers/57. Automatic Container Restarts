@@ -1,0 +1,25 @@
+
+ Status Codes
+ _____________________________________________________
+|            |                                        |
+|     0      |    We exited and everything is OK      |
+|____________|________________________________________|
+|            |                                        |
+| 1,2,3, etc | We exited because something went wrong |
+|____________|________________________________________|
+
+
+Restart Policies
+ _______________________________________________________________________________________
+|                |                                                                      |
+|      "no"      | Never attempt to restart this container if it stops or crashes       |
+|________________|______________________________________________________________________|
+|                |                                                                      |
+|     always     | If this container stops for any reason, always attempt to restart it |
+|________________|______________________________________________________________________|
+|                |                                                                      |
+|   on-failure   |       Only restart if the container stops with an error code         |
+|________________|______________________________________________________________________|
+|                |                                                                      |
+| unless-stopped |     Always restart unless we (the developers) forcibly stop it       |
+|________________|______________________________________________________________________|
