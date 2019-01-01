@@ -1,0 +1,29 @@
+$ docker run 1e08a076da9a
+
+ ____________________________________________________
+|
+|  > frontend@0.1.0 start /app
+|  > react-scripts start
+|  
+|  Starting the development server...
+|  
+|  Compiled successfully!
+|  
+|  You can now view frontend in the browser.
+|  
+|    Local:            http://localhost:3000/
+|    On Your Network:  http://172.17.0.2:3000/
+|  
+|  Note that the development build is not optimized.
+|  To create a production build, use yarn build.
+|_____________________________________________________  
+
+Open http://localhost:3000 - This site can’t be reached
+
+Port mapping is required
+
+$ docker run -p 3000:3000 1e08a076da9a
+
+Open http://localhost:3000 - Response 200
+
+But if we make any change in the app codebase it doesn't reflect automatically
