@@ -1,0 +1,5 @@
+$ docker-compose up
+
+Creating network "frontend_default" with the default driver
+Building web
+ERROR: Cannot locate specified Dockerfile: Dockerfile
