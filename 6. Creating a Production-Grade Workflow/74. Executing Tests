@@ -1,0 +1,25 @@
+$ docker build -f Dockerfile.dev .
+
+
+Sending build context to Docker daemon  451.6kB
+Step 1/6 : FROM node:alpine
+ ---> 2ead1ce61ccb
+Step 2/6 : WORKDIR /app
+ ---> Using cache
+ ---> 2f6876d451e0
+Step 3/6 : COPY package.json .
+ ---> Using cache
+ ---> b23fc2e42fc6
+Step 4/6 : RUN npm install
+ ---> Using cache
+ ---> 5fe40a60430b
+Step 5/6 : COPY . .
+ ---> Using cache
+ ---> dd5c7f851d8d
+Step 6/6 : CMD ["npm", "run", "start"]
+ ---> Using cache
+ ---> fd2d19173a3d
+Successfully built fd2d19173a3d
+
+
+$ docker run -it fd2d19173a3d npm run test
