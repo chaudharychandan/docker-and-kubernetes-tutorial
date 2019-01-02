@@ -1,0 +1,1 @@
+We can remove the COPY command from Dockerfile.dev since the volume instruction looks back to the local directory and copies that into the container
