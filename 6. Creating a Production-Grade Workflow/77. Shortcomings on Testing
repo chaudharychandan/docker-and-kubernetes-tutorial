@@ -1,0 +1,71 @@
+
+           _____________________________         _____________________________   
+          |                             |       |                             |
+          |       TEST CONTAINER        |       |        WEB CONTAINER        |
+          |_____________________________|       |_____________________________|
+          |  _________________________  |       |  _________________________  |
+          | |                         | |       | |                         | |
+          | |      npm run test       | |       | |      npm run start      | |
+          | |_________________________| |       | |_________________________| |
+          | |       |        |        | |       | |       |        |        | |
+          | | stdin | stdout | stderr | |       | | stdin | stdout | stderr | |
+          | |_______|________|________| |       | |_______|________|________| |
+          |_____________________________|       |_____________________________|
+
+
+           ___________________________________________________________________
+          |                                                                   |
+          |                       O U R  T E R M I N A L                      |
+          |___________________________________________________________________|
+
+
+$ docker ps
+
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS                    NAMES
+88f392f9d39d        frontend_tests      "npm run test"      29 minutes ago      Up 12 seconds                                frontend_tests_1_10f7b6d9057d
+c48227a7bb71        frontend_web        "npm run start"     40 minutes ago      Up 11 seconds       0.0.0.0:3000->3000/tcp   frontend_web_1_2acb7c0ef4b3
+
+$ docker attach 88f392f9d39d
+
+q
+t
+w
+q
+
+- Not interactive
+
+$ docker exec -it 88f392f9d39d sh
+
+/app # ps
+PID   USER     TIME  COMMAND
+    1 root      0:00 npm
+   18 root      0:00 node /app/node_modules/.bin/react-scripts test
+   25 root      0:03 node /app/node_modules/react-scripts/scripts/test.js
+   40 root      0:00 sh
+   47 root      0:00 ps
+
+
+ __________________________________________________________ 
+|                                                          |
+|                     TEST CONTAINER                       |
+|__________________________________________________________|
+|  _________________________    _________________________  |
+| |                         |  |                         | |
+| |         test.js         |  |          npm            | |
+| |_________________________|  |_________________________| |
+| |       |        |        |  |       |        |        | |
+| | stdin | stdout | stderr |  | stdin | stdout | stderr | |
+| |_______|________|________|  |_______|________|________| |
+|____^_____________________________________________________|
+     |
+     |_______________________                         
+ ____________________________|_____________________________
+|                                                          |
+|                  O U R  T E R M I N A L                  |
+|__________________________________________________________|
+
+npm is a program which runs test.js and start another process. When we attach to the container, it runs our stdin commands to the primary process npm not the test.js.
+When we run `docker attach <container id>`, it always attach to stdin of the primary of the container i.e. npm.
+It is not the npm command which is in charge of recieving the keys presses and interpreting all those different options we have like p, t, q and Enter but the secondary process started by npm.
+To be able to interact with the test suite (p, q, t etc) we will need to attach to the other command/running process.
+This is not possible using Docker.
