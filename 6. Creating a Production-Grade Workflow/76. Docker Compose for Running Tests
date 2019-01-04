@@ -1,0 +1,48 @@
+$ docker-compose up
+ _____________________________________________________________________________
+| 
+| Starting frontend_web_1_2acb7c0ef4b3   ... done
+| Creating frontend_tests_1_2e76a544f38d ... done
+| Attaching to frontend_web_1_2acb7c0ef4b3, frontend_tests_1_10f7b6d9057d
+| web_1_2acb7c0ef4b3 |
+| web_1_2acb7c0ef4b3 | > frontend@0.1.0 start /app
+| web_1_2acb7c0ef4b3 | > react-scripts start
+| web_1_2acb7c0ef4b3 |
+| web_1_2acb7c0ef4b3 | Starting the development server...
+| web_1_2acb7c0ef4b3 |
+| web_1_2acb7c0ef4b3 | Compiled successfully!
+| web_1_2acb7c0ef4b3 |
+| web_1_2acb7c0ef4b3 | You can now view frontend in the browser.
+| web_1_2acb7c0ef4b3 |
+| web_1_2acb7c0ef4b3 |   Local:            http://localhost:3000/
+| web_1_2acb7c0ef4b3 |   On Your Network:  http://172.20.0.2:3000/
+| web_1_2acb7c0ef4b3 |
+| web_1_2acb7c0ef4b3 | Note that the development build is not optimized.
+| web_1_2acb7c0ef4b3 | To create a production build, use yarn build.
+| web_1_2acb7c0ef4b3 |
+| tests_1_10f7b6d9057d |
+| tests_1_10f7b6d9057d | > frontend@0.1.0 test /app
+| tests_1_10f7b6d9057d | > react-scripts test
+| tests_1_10f7b6d9057d |
+| tests_1_10f7b6d9057d | PASS src/App.test.js
+| tests_1_10f7b6d9057d |   ✓ renders without crashing (46ms)
+| tests_1_10f7b6d9057d |
+| tests_1_10f7b6d9057d | Test Suites: 1 passed, 1 total
+| tests_1_10f7b6d9057d | Tests:       1 passed, 1 total
+| tests_1_10f7b6d9057d | Snapshots:   0 total
+| tests_1_10f7b6d9057d | Time:        3.737s
+| tests_1_10f7b6d9057d | Ran all test suites.
+| tests_1_10f7b6d9057d |
+| tests_1_10f7b6d9057d | PASS src/App.test.js
+| tests_1_10f7b6d9057d |   ✓ renders without crashing (24ms)
+| tests_1_10f7b6d9057d |   ✓ renders without crashing (2ms)
+| tests_1_10f7b6d9057d |
+| tests_1_10f7b6d9057d | Test Suites: 1 passed, 1 total
+| tests_1_10f7b6d9057d | Tests:       2 passed, 2 total
+| tests_1_10f7b6d9057d | Snapshots:   0 total
+| tests_1_10f7b6d9057d | Time:        1.64s, estimated 4s
+| tests_1_10f7b6d9057d | Ran all test suites.
+| tests_1_10f7b6d9057d |
+|_____________________________________________________________________________
+
+The problem with this approach is we can't interact with the test run options.
