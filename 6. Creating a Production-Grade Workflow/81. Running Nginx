@@ -1,0 +1,71 @@
+$ docker build .
+
+_____________________________________________________________________
+
+
+Sending build context to Docker daemon  452.1kB
+Step 1/8 : FROM node:alpine as builder
+ ---> 2ead1ce61ccb
+Step 2/8 : WORKDIR /app
+ ---> Using cache
+ ---> 2f6876d451e0
+Step 3/8 : COPY package.json .
+ ---> Using cache
+ ---> 1d0286104506
+Step 4/8 : RUN npm install
+ ---> Using cache
+ ---> 7f21d0141b36
+Step 5/8 : COPY . .
+ ---> 428184cc15f8
+Step 6/8 : RUN npm run build
+ ---> Running in 5bfa0d96b2a8
+
+> frontend@0.1.0 build /app
+> react-scripts build
+
+Creating an optimized production build...
+Compiled successfully.
+
+File sizes after gzip:
+
+  34.71 KB  build/static/js/1.fa92c112.chunk.js
+  763 B     build/static/js/runtime~main.229c360f.js
+  728 B     build/static/js/main.1df74f5a.chunk.js
+  510 B     build/static/css/main.19feac94.chunk.css
+
+The project was built assuming it is hosted at the server root.
+You can control this with the homepage field in your package.json.
+For example, add this to build it for GitHub Pages:
+
+  "homepage" : "http://myname.github.io/myapp",
+
+The build folder is ready to be deployed.
+You may serve it with a static server:
+
+  yarn global add serve
+  serve -s build
+
+Find out more about deployment here:
+
+  http://bit.ly/CRA-deploy
+
+Removing intermediate container 5bfa0d96b2a8
+ ---> 0aeeaded806d
+Step 7/8 : FROM nginx
+latest: Pulling from library/nginx
+177e7ef0df69: Pull complete 
+ea57c53235df: Pull complete 
+bbdb1fbd4a86: Pull complete 
+Digest: sha256:b543f6d0983fbc25b9874e22f4fe257a567111da96fd1d8f1b44315f1236398c
+Status: Downloaded newer image for nginx:latest
+ ---> 7042885a156a
+Step 8/8 : COPY --from=builder /app/build /usr/share/nginx/html
+ ---> be8aa2d1ec73
+Successfully built be8aa2d1ec73
+
+________________________________________________________________________________________
+
+$ docker run -p "8080:80" be8aa2d1ec73
+
+
+http://localhost:8080 - Serving react app
