@@ -1,0 +1,10 @@
+$ docker-compose up
+
+$ docker ps 
+
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS                    NAMES
+c48227a7bb71        frontend_web        "npm run start"     3 minutes ago       Up 2 minutes        0.0.0.0:3000->3000/tcp   frontend_web_1_2acb7c0ef4b3
+
+$ docker exec -it c48227a7bb71 npm run test
+
+The above command run the latest test cases whenever you modify the tests but requires the container id to perform the test run.
