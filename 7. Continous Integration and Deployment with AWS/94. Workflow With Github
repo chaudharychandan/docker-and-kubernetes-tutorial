@@ -1,0 +1,4 @@
+1. Create a feature branch from master
+2. Make some change in App.js file and commit
+3. Push that change to Github
+4. Raise pull request from feature branch to master
