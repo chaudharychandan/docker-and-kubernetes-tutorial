@@ -1,0 +1,9 @@
+Remember, we need to delete the resources we created or you might end up paying real money for them.  To clean up the Elastic Beanstalk instance we created, do the following:
+
+1) Go to the Elastic Beanstalk dashboard, where you should see a page that looks like this:
+
+2) On the top right hand side click the 'Actions' button
+
+3) Click on 'Delete Application' then confirm the delete
+
+Note: it might take a few minutes for the dashboard to update and show that your app is being deleted.  Be a little patient!
