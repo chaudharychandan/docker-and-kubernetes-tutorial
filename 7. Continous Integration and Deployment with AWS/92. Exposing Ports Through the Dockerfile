@@ -1,0 +1,1 @@
+Expose port 80 in Dockerfile to map port 80 by Elastic Beanstalk
