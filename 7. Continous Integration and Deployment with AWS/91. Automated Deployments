@@ -1,0 +1,1 @@
+Add AWS IAM user's access key and secret key to Travis's environment variables
