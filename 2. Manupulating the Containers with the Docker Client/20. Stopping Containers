@@ -78,7 +78,7 @@ ________________________________________________________________________________
 1. `docker stop <container id>` command issues a hardware signal to the process, SIGTERM message to the primary process inside that container.
    It causes the process to shut down on its own time. The process will have a little bit of time to shut itself down and do a little bit of cleanup.
 
-2. However `docker stop <container id>` command issues SIGKILL signal to the primary running process inside the container. SIGKILL immediately shuts
+2. However `docker kill <container id>` command issues SIGKILL signal to the primary running process inside the container. SIGKILL immediately shuts
    down and doesn't do any additional work.
 
 3. If docker kill doesn't automatically stop in 10 seconds then Docker is going to automatically fallback to issuing docker kill command.
