@@ -40,7 +40,7 @@
                           Run another command      id of the container
                _______________________________________________________________
               |            |           |         |                |           |
-              |   docker   |    run    |   -lt   | <container id> |  command  |
+              |   docker   |    exec   |   -it   | <container id> |  command  |
               |____________|___________|_________|________________|___________|
  
               Reference the          Allow us to provide
