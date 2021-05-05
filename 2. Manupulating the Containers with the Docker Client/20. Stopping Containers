@@ -81,7 +81,7 @@ ________________________________________________________________________________
 2. However `docker kill <container id>` command issues SIGKILL signal to the primary running process inside the container. SIGKILL immediately shuts
    down and doesn't do any additional work.
 
-3. If docker kill doesn't automatically stop in 10 seconds then Docker is going to automatically fallback to issuing docker kill command.
+3. If docker stop doesn't automatically stop in 10 seconds then Docker is going to automatically fallback to issuing docker kill command.
 
 
 $ docker stop 1a6d6c9377fb
